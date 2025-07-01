@@ -1,10 +1,8 @@
-{# apps/iris/templates/iris/user_results.html #}
 {% extends 'base.html' %} {# base.html에서 부트스트랩 CSS/JS를 불러와야 합니다! #}
 {% block title %}추론 결과{% endblock %}
 {% block content %}
     <div class="container mt-4"> {# 전체 내용을 감싸는 부트스트랩 컨테이너, 위쪽 여백(margin-top) 4칸 #}
         <h1 class="mb-4">내 추론 결과</h1> {# 제목에 아래쪽 여백(margin-bottom) 4칸 #}
-
         {% if results %}
             {# 테이블을 반응형으로 만들어 작은 화면에서도 잘 보이게 함 #}
             <div class="table-responsive">
@@ -42,9 +40,9 @@
                             <td>{{ result.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
                             <td>
                                 {% if not result.confirm %}
-#                                    <form action="{{ url_for('iris.confirm_result', result_id=result.id) }}" method="POST" class="d-inline"> {# 인라인(inline)으로 표시 #}
-#                                        <button type="submit" class="btn btn-sm btn-primary">확인</button> {# 작은 버튼 스타일 #}
-#                                    </form>
+{#                                    <form action="{{ url_for('iris.confirm_result', result_id=result.id) }}" method="POST" class="d-inline"> #} {# 인라인(inline)으로 표시 #}
+{#                                        <button type="submit" class="btn btn-sm btn-primary">확인</button> #} {# 작은 버튼 스타일 #} 
+{#                                    </form>     #}
                                 {% else %}
                                     <span class="badge bg-secondary">확인 완료</span> {# 확인 완료 시 뱃지 스타일 #}
                                 {% endif %}
@@ -56,7 +54,7 @@
             </div> {# .table-responsive 끝 #}
         {% else %}
             <div class="alert alert-info" role="alert"> {# 정보성 알림 메시지 스타일 #}
-                AI 추론 결과가 없습니다. <a href="{{ url_for('iris.iris_predict') }}" class="alert-link">지금 붓꽃 분류하기</a>
+                아직 추론 결과가 없습니다. <a href="{{ url_for('iris.predict') }}" class="alert-link">지금 붓꽃 분류하기</a>
             </div>
         {% endif %}
     </div> {# .container 끝 #}

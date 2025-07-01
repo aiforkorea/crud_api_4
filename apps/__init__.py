@@ -34,6 +34,7 @@ def create_app():     #  factory 함수
         from flask import flash, redirect, url_for, request
         flash('로그인이 필요합니다.', 'warning')
         return redirect(url_for('auth.login', next=request.path))
+
     # 블루프린트 등록
     from .main import main
     from .auth import auth

@@ -19,7 +19,7 @@
             <a class="nav-link" href="{{ url_for('admin.index') }}">관리자</a></li>
         {% endif %}
         <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('main.index') }}">마이페이지</a></li>
+            <a class="nav-link" href="{{ url_for('main.index') }}">마이페이지</a></li> {#추후mypage.dashboard수정#}
     <li class="nav-item">
       <a class="nav-link" href="{{ url_for('auth.logout') }}">로그아웃</a></li>
     {% else %}

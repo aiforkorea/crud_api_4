@@ -10,4 +10,3 @@ class IrisUserForm(FlaskForm):
     petal_width = FloatField('petal width', validators=[DataRequired()])
 #    api_key = PasswordField('api_key', validators=[DataRequired()])
     submit = SubmitField('예측')
-

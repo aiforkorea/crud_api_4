@@ -7,7 +7,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 #hash import
 from datetime import datetime
 from apps.config import Config
-
 class User(db.Model, UserMixin): 
 # db.Model, UserMixin 상속하는 User 클래스 생성
     __tablename__= "users"  # 삭제시, 테이블 이름은 Model 이름 소문자 
@@ -24,17 +23,11 @@ class User(db.Model, UserMixin):
     # The 'password' property and its setter
     @property
     def password(self):
-        """
-        Prevent direct reading of the password.
-        Attempting to read `user.password` will raise an AttributeError.
-        """
+        # Prevent direct reading of the password. Attempting to read `user.password` will raise an AttributeError.
         raise AttributeError('password is not a readable attribute')
     @password.setter
     def password(self, password):
-        """
-        Hashes the plain-text password and stores it in password_hash.
-        This allows you to do `user.password = "mysecretpassword"`.
-        """
+        # Hashes the plain-text password and stores it in password_hash. This allows you to do `user.password = "mysecretpassword"`.
         self.password_hash = generate_password_hash(password)
     # Method to check password (you likely already have this or check_password)
     def check_password(self, password):
@@ -65,7 +58,6 @@ class User(db.Model, UserMixin):
     def get_id(self):
         return str(self.id)
     # 현재 로그인하고 있는 사용자 정보 취득 함수 설정은 apps/__init__.py에서 정의함
-
 class APIKey(db.Model):
     __tablename__ = 'api_keys'
     id = db.Column(db.Integer, primary_key=True)
@@ -119,4 +111,3 @@ class IRIS(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.now, index=True)
     def __repr__(self):
         return f'<IRIS {self.sepal_length}, {self.sepal_width}, {self.petal_length}, {self.petal_width} -> {self.predicted_class}>'
-

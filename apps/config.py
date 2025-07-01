@@ -18,21 +18,9 @@ class Config:
     # REMEMBER_COOKIE_DURATION = 3600  # 1시간
     CSRF_ENABLED = True
     CSRF_SESSION_KEY = os.getenv('CSRF_SESSION_KEY', SECRET_KEY) # 없으면,SECRET_KEY사용
+    # API Key 관련 설정 (필요시 추가)
+    API_KEY_LENGTH = os.getenv('API_KEY_LENGTH') # API 키 길이   
+    #API_KEY_EXPIRATION_DAYS = 365 # API 키 만료일
     ADMIN_USERNAME = os.getenv('ADMIN_USERNAME')    
     ADMIN_EMAIL = os.getenv('ADMIN_EMAIL')    
     ADMIN_PASSWORD = os.getenv('ADMIN_PASSWORD')
-
-    # API Key 관련 설정 (필요시 추가)
-    API_KEY_LENGTH = 32 # API 키 길이   
-    API_KEY_EXPIRATION_DAYS = 365 # API 키 만료일
-
-    LOGIN_USER_RATE_LIMIT = os.getenv('LOGIN_USER_RATE_LIMIT')    
-    API_KEY_RATE_LIMIT = os.getenv('API_KEY_RATE_LIMIT')
-
-    API_KEY_LENGTH = os.getenv('API_KEY_LENGTH')
-    PERMANENT_SESSION_LIFETIME=os.getenv('PERMANENT_SESSION_LIFETIME')
-
-    # 로깅 설정 (프로덕션 환경)
-    LOG_TO_STDOUT = os.environ.get('LOG_TO_STDOUT')
-    LOG_FILE_PATH = os.path.join(BASE_DIR, 'logs/app.log')
-    LOG_LEVEL = 'INFO' # DEBUG, INFO, WARNING, ERROR, CRITICAL
